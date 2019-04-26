@@ -1,0 +1,22 @@
+{
+  "LOGIN": {
+    "USERNAME": "Nombre de usuario",
+    "PASSWORD": "Contraseña",
+    "REMEMBERME": "Recordarme",
+    "FORGOTPWS": "¿Olvidaste la contraseña?",
+    "LOGIN": "Iniciar sesión",
+    "ACCOUNTQUESTION": "¿No tienes una cuenta?",
+    "SIGNUP": "Registrate"
+  },
+  "REGISTER": {
+    "REGISTERNOW": "Registrarse ahora",
+    "CREATEACCOUNTANDENJOY": "Crea tu cuenta y disfruta",
+    "NAME": "Nombre",
+    "EMAIL": "Correo electrónico",
+    "CONFIRMPASS": "Confirmar contraseña",
+    "IAGREEWITHTHETERMS": "Estoy de acuerdo con los términos.",
+    "SIGNUP": "Registrarse",
+    "ALREADYHAVEANACCOUNT": "¿Ya tienes una cuenta?",
+    "SIGNIN": "Inicia sesión"
+  }
+}
