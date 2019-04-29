@@ -5,14 +5,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { LoginComponent } from '../components/login/login.component';
 import { RegisterComponent } from '../components/login/register.component';
-import { BreadcrumsComponent } from '../components/shared/breadcrums/breadcrums.component';
-import { HeaderComponent } from '../components/shared/header/header.component';
-import { NopagefoundComponent } from '../components/shared/nopagefound/nopagefound.component';
-import { SidebarComponent } from '../components/shared/sidebar/sidebar.component';
-import { Charts1Component } from '../pages/charts1/charts1.component';
-import { DashboardComponent } from '../pages/dashboard/dashboard.component';
-import { PagesComponent } from '../pages/pages.component';
-import { ProgressComponent } from '../pages/progress/progress.component';
+import { PagesModule } from '../pages/pages.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -22,22 +15,9 @@ export function HttpLoaderFactory(http: HttpClient) {
 }
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    NopagefoundComponent,
-    BreadcrumsComponent,
-    HeaderComponent,
-    SidebarComponent,
-    Charts1Component,
-    DashboardComponent,
-    ProgressComponent,
-    PagesComponent,
-    RegisterComponent
-  ],
+  declarations: [AppComponent, LoginComponent, RegisterComponent],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     HttpClientModule,
     TranslateModule.forRoot({
       loader: {
@@ -45,7 +25,9 @@ export function HttpLoaderFactory(http: HttpClient) {
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       }
-    })
+    }),
+    PagesModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
