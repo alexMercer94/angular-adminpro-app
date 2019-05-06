@@ -18,5 +18,10 @@
     "SIGNUP": "Registrarse",
     "ALREADYHAVEANACCOUNT": "¿Ya tienes una cuenta?",
     "SIGNIN": "Inicia sesión"
+  },
+  "DASHBOARD": {
+    "ACCOUNTSETTINGS": {
+      "THEMES": "Temas"
+    }
   }
 }

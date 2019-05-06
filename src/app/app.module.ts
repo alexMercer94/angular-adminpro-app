@@ -7,6 +7,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { LoginComponent } from '../components/login/login.component';
 import { RegisterComponent } from '../components/login/register.component';
 import { PagesModule } from '../pages/pages.module';
+import { ProviderModule } from '../providers/provider.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -28,6 +29,7 @@ export function HttpLoaderFactory(http: HttpClient) {
       }
     }),
     PagesModule,
+    ProviderModule,
     AppRoutingModule,
     FormsModule
   ],
