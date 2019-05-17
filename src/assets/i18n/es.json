@@ -1,23 +1,26 @@
 {
   "LOGIN": {
-    "USERNAME": "Nombre de usuario",
+    "USERNAME": "Correo del usuario",
     "PASSWORD": "Contraseña",
     "REMEMBERME": "Recordarme",
     "FORGOTPWS": "¿Olvidaste la contraseña?",
     "LOGIN": "Iniciar sesión",
     "ACCOUNTQUESTION": "¿No tienes una cuenta?",
-    "SIGNUP": "Registrate"
+    "SIGNUP": "Registrate",
+    "LOGINGOOGLE": "Iniciar sesión con Google"
   },
   "REGISTER": {
     "REGISTERNOW": "Registrarse ahora",
     "CREATEACCOUNTANDENJOY": "Crea tu cuenta y disfruta",
     "NAME": "Nombre",
     "EMAIL": "Correo electrónico",
+    "PASSWORD": "Contraseña",
     "CONFIRMPASS": "Confirmar contraseña",
     "IAGREEWITHTHETERMS": "Estoy de acuerdo con los términos.",
     "SIGNUP": "Registrarse",
     "ALREADYHAVEANACCOUNT": "¿Ya tienes una cuenta?",
-    "SIGNIN": "Inicia sesión"
+    "SIGNIN": "Inicia sesión",
+    "MESSAGECONFIRMPASS": "Las contraseñas deben ser iguales."
   },
   "DASHBOARD": {
     "ACCOUNTSETTINGS": {
