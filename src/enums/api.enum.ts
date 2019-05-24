@@ -4,5 +4,11 @@ export enum EApi {
 
   // * Login
   getLogin = '/login',
-  getLoginGoogle = '/login/google'
+  getLoginGoogle = '/login/google',
+
+  // *Images
+  getImage = '/img',
+
+  // * Upload images
+  uploadImages = '/upload'
 }

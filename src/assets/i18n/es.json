@@ -25,6 +25,21 @@
   "DASHBOARD": {
     "ACCOUNTSETTINGS": {
       "THEMES": "Temas"
+    },
+    "HEADER": {
+      "VIEWPERFIL": "Ver perfil",
+      "MYPROFILE": "Mi Perfil"
+    },
+    "SIDEBAR": {
+      "PROFILE": "Perfil"
+    },
+    "PROFILE": {
+      "PROFILE": "Perfil del Usuario",
+      "SAVE": "Guardar",
+      "USERPHOTO": "Fotografía del Usuario",
+      "BTNUPDATE": "Actualizar",
+      "USERNAME": "Nombre de Usuario",
+      "EMAIL": "Correo Electrónico"
     }
   }
 }

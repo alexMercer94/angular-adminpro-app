@@ -7,6 +7,7 @@ import { User } from 'src/models/user.model';
 import Swal from 'sweetalert2';
 import { URL_SERVICES } from '../../config/config';
 import { EApi } from '../../enums/api.enum';
+import { UploadFilesService } from '../uploadFiles/upload-files.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class UserService {
   user: User;
   token: string;
 
-  constructor(public http: HttpClient, private router: Router) {
+  constructor(public http: HttpClient, private router: Router, public uploadFileService: UploadFilesService) {
     this.loadStorage();
   }
 
@@ -102,6 +103,28 @@ export class UserService {
   }
 
   /**
+   * Updata a user in database consulting the service
+   * @param user : User to update in database
+   */
+  updateUser(user: User): Observable<IUpdateUser> {
+    const URL = URL_SERVICES + EApi.userServices + `/${user._id}?token=${this.token}`;
+    return this.http.put(URL, user).pipe(
+      tap((resp: IUpdateUser) => {
+        const userDB: User = resp.user;
+        this.saveInLocalStorage(userDB._id, this.token, userDB);
+        Swal.fire({
+          title: 'Usuario Actualizado',
+          text: user.name,
+          type: 'success',
+          confirmButtonText: 'OK'
+        });
+
+        return userDB;
+      })
+    );
+  }
+
+  /**
    * Create user in database
    * @param user User to create
    */
@@ -119,5 +142,29 @@ export class UserService {
         return resp.user;
       })
     );
+  }
+
+  /**
+   * Change image consulting the web service
+   * @param file File selected
+   * @param id User's id to identify user in database
+   */
+  changeImage(file: File, id: string): void {
+    this.uploadFileService
+      .uploadFile(file, 'users', id)
+      .then((resp: IUpdateImage) => {
+        this.user.img = resp.user.img;
+        Swal.fire({
+          title: 'Imagen actualizada',
+          text: this.user.name,
+          type: 'success',
+          confirmButtonText: 'OK'
+        });
+
+        this.saveInLocalStorage(id, this.token, this.user);
+      })
+      .catch((resp: IUpdateImage) => {
+        console.log(resp);
+      });
   }
 }
