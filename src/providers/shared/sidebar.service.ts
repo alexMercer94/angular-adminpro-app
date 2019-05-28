@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,16 @@ export class SidebarService {
         { title: 'Promesas', url: '/promises' },
         { title: 'RxJs', url: '/rxjs' }
       ]
+    },
+    {
+      title: 'Mantenimiento',
+      icon: 'mdi mdi-folder-lock-open',
+      submenu: [
+        { title: 'Usuarios', url: '/users' },
+        { title: 'Hospitales', url: '/hospitals' },
+        { title: 'Médicos', url: '/medicos' }
+      ]
     }
   ];
-  constructor() {}
+  constructor(private translateService: TranslateService) {}
 }

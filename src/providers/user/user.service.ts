@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { User } from 'src/models/user.model';
 import Swal from 'sweetalert2';
 import { URL_SERVICES } from '../../config/config';
@@ -110,8 +110,12 @@ export class UserService {
     const URL = URL_SERVICES + EApi.userServices + `/${user._id}?token=${this.token}`;
     return this.http.put(URL, user).pipe(
       tap((resp: IUpdateUser) => {
-        const userDB: User = resp.user;
-        this.saveInLocalStorage(userDB._id, this.token, userDB);
+        let userDB: User;
+        if (user._id === this.user._id) {
+          userDB = resp.user;
+          this.saveInLocalStorage(userDB._id, this.token, userDB);
+        }
+
         Swal.fire({
           title: 'Usuario Actualizado',
           text: user.name,
@@ -166,5 +170,28 @@ export class UserService {
       .catch((resp: IUpdateImage) => {
         console.log(resp);
       });
+  }
+
+  /**
+   * Get the next registers consulting the web service
+   * @param desde Param to get the next number of registers
+   */
+  loadUsers(desde: number = 0): Observable<object> {
+    const URL = URL_SERVICES + `${EApi.getAllUsers}${desde}`;
+    return this.http.get(URL);
+  }
+
+  /**
+   * Seach a user consuting web service
+   * @param termino String to use in order to search in web service
+   */
+  searchUser(termino: string): Observable<IUser[]> {
+    const URL = URL_SERVICES + `${EApi.searchSpecificCollection}users/${termino}`;
+    return this.http.get(URL).pipe(map((res: ISearchUsers) => res.users));
+  }
+
+  deleteUser(id: string): Observable<IDeleteUser> {
+    const URL = URL_SERVICES + `${EApi.userServices}/${id}/?token=${this.token}`;
+    return this.http.delete(URL).pipe(tap((resp: IDeleteUser) => resp));
   }
 }

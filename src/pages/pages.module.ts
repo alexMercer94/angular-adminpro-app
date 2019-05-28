@@ -5,6 +5,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ChartsModule } from 'ng2-charts';
 import { ChartComponent } from '../components/chart/chart.component';
 import { IncrementadorComponent } from '../components/incrementador/incrementador.component';
+import { ModalUploadComponent } from '../components/modal-upload/modal-upload.component';
 import { SharedModule } from '../components/shared/shared.module';
 import { PipesModule } from '../pipes/pipes.module';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
@@ -16,6 +17,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { ProgressComponent } from './progress/progress.component';
 import { PromisesComponent } from './promises/promises.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
+import { UsersComponent } from './users/users.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { RxjsComponent } from './rxjs/rxjs.component';
     AccountSettingsComponent,
     PromisesComponent,
     RxjsComponent,
-    ProfileComponent
+    ProfileComponent,
+    UsersComponent,
+    ModalUploadComponent
   ],
   exports: [DashboardComponent, ProgressComponent, Charts1Component, PagesComponent],
   imports: [CommonModule, FormsModule, SharedModule, ChartsModule, TranslateModule, PagesRoutingModule, PipesModule]

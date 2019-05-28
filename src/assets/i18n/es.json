@@ -40,6 +40,26 @@
       "BTNUPDATE": "Actualizar",
       "USERNAME": "Nombre de Usuario",
       "EMAIL": "Correo Electrónico"
+    },
+    "USERS": {
+      "USERSREISTERED": "Usuarios registrados",
+      "EMAIL": "Email",
+      "IMAGE": "Imágen",
+      "NAME": "Nombre",
+      "ROLE": "Role",
+      "AUTH": "Auth",
+      "BTNBACK": "Anteriores",
+      "BTNNEXT": "Siguientes",
+      "AUTHGOOGLE": "Google",
+      "AUTHNORMAL": "Normal"
     }
+  },
+  "SPINNER": {
+    "LOADING": "Cargando",
+    "PLEASEWAIT": "Espere por favor."
+  },
+  "MODAL": {
+    "CLOSE": "Cerrar",
+    "UPLOADIMAGE": "Subir imágen"
   }
 }

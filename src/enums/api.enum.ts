@@ -1,6 +1,7 @@
 export enum EApi {
   // * User
   userServices = '/user',
+  getAllUsers = '/user?desde=',
 
   // * Login
   getLogin = '/login',
@@ -10,5 +11,8 @@ export enum EApi {
   getImage = '/img',
 
   // * Upload images
-  uploadImages = '/upload'
+  uploadImages = '/upload',
+
+  // * Search in especific collection
+  searchSpecificCollection = '/busqueda/coleccion/'
 }
