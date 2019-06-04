@@ -4,6 +4,9 @@ import { CanactivateAuthGuard } from '../guards/canactivate-auth/canactivate-aut
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { Charts1Component } from './charts1/charts1.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { HospitalsComponent } from './hospitals/hospitals.component';
+import { MedicoComponent } from './medicos/medico.component';
+import { MedicosComponent } from './medicos/medicos.component';
 import { PagesComponent } from './pages.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ProgressComponent } from './progress/progress.component';
@@ -26,6 +29,9 @@ const routes: Routes = [
       { path: 'profile', component: ProfileComponent, data: { title: 'Perfil de Usuario' } },
       // Mantenimientos
       { path: 'users', component: UsersComponent, data: { title: 'Mantenimiento de Usuarios' } },
+      { path: 'hospitals', component: HospitalsComponent, data: { title: 'Mantenimiento de Hospitales' } },
+      { path: 'medicos', component: MedicosComponent, data: { title: 'Mantenimiento de Médicos' } },
+      { path: 'medico/:id', component: MedicoComponent, data: { title: 'Actualizar Médico' } },
       { path: '', pathMatch: 'full', redirectTo: 'dashboard' } // Ruta cuando no existe ninguna ruta
     ]
   }

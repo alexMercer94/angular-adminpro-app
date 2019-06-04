@@ -26,7 +26,7 @@ export class UploadFilesService {
       xhr.onreadystatechange = () => {
         if (xhr.readyState === 4) {
           if (xhr.status === 200) {
-            console.log('Image uploaded');
+            // console.log('Image uploaded');
             resolve(JSON.parse(xhr.response));
           } else {
             console.log('Fallo la subida');

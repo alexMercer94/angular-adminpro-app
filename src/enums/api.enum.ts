@@ -3,6 +3,14 @@ export enum EApi {
   userServices = '/user',
   getAllUsers = '/user?desde=',
 
+  // * Hospital
+  hospitalServices = '/hospital',
+  getAllHospitals = '/hospital?desde=',
+
+  // * Médicos
+  medicosServices = '/medico',
+  getAllMedicos = '/medico?desde=',
+
   // * Login
   getLogin = '/login',
   getLoginGoogle = '/login/google',

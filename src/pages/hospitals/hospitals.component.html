@@ -1,0 +1,82 @@
+<div class="row animated fadeIn">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <input
+          #inputSearch
+          (keyup)="searchHospital(inputSearch.value)"
+          type="text"
+          class="form-control"
+          placeholder="Buscar Hospital..."
+        />
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row animated fadeIn" *ngIf="loading">
+  <div class="col-sm-12">
+    <div class="alert alert-warning text-center">
+      <strong>{{ 'SPINNER.LOADING' | translate }}</strong>
+      <br />
+      <i class="fa fa-refresh fa-spin fa-2x"></i>
+      <br />
+      <span>{{ 'SPINNER.PLEASEWAIT' | translate }}</span>
+    </div>
+  </div>
+</div>
+
+<div class="row animated fadeIn" *ngIf="!loading">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="text-right">
+          <button (click)="createHospital()" type="button" class="btn waves-effect waves-light btn-rounded btn-primary">
+            <i class="fa fa-plus"></i> {{ 'DASHBOARD.HOSPITALS.BTNCREATEHOSPITAL' | translate }}
+          </button>
+        </div>
+        <h3 class="card-title">
+          {{ 'DASHBOARD.HOSPITALS.HOSPITALREGISTERED' | translate }} <small>({{ totalRegistros }})</small>
+        </h3>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>{{ 'DASHBOARD.HOSPITALS.PHOTO' | translate }}</th>
+              <th>{{ 'DASHBOARD.HOSPITALS.HOSPITAL' | translate }}</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let hospital of hospitals">
+              <td class="w70">
+                <img
+                  (click)="showModal(hospital._id)"
+                  [src]="hospital.img | image: 'hospital'"
+                  class="img-50 img-circle pointer"
+                />
+              </td>
+              <td>
+                <input [(ngModel)]="hospital.name" name="Nombre" type="text" class="form-control" placeholder="{{ 'DASHBOARD.HOSPITALS.HOSPITALNAME' | translate }}" />
+              </td>
+              <td>
+                <button (click)="updateHospital(hospital)" class="btn btn-primary mr-1">
+                  <i class="fa fa-save"></i>
+                </button>
+                <button (click)="deleteHospital(hospital)" class="btn btn-danger">
+                  <i class="fa fa-trash"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <button (click)="changeDesde(-5)" class="btn btn-secondary mr-1">
+          {{ 'DASHBOARD.HOSPITALS.BTNBACK' | translate }}
+        </button>
+        <button (click)="changeDesde(5)" class="btn btn-secondary">
+          {{ 'DASHBOARD.HOSPITALS.BTNNEXT' | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

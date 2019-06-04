@@ -52,6 +52,31 @@
       "BTNNEXT": "Siguientes",
       "AUTHGOOGLE": "Google",
       "AUTHNORMAL": "Normal"
+    },
+    "HOSPITALS": {
+      "HOSPITALREGISTERED": "Hospitales registrados",
+      "PHOTO": "Foto",
+      "HOSPITAL": "Hospital",
+      "BTNBACK": "Anteriores",
+      "BTNNEXT": "Siguientes",
+      "BTNCREATEHOSPITAL": "Crear Hospital",
+      "HOSPITALNAME": "Nombre del Hospital"
+    },
+    "MEDICOS": {
+      "BTNCREATEMEDICO": "Crear Médico",
+      "MEDICOSREGISTERED": "Médicos registrados",
+      "PHOTO": "Foto",
+      "MEDICO": "Médico",
+      "HOSPITAL": "Hospital",
+      "MEDICOSETTINGS": {
+        "MEDICO": "Médico:",
+        "NAME": "Nombre del Médico",
+        "HOSPITAL": "Hospital",
+        "SELECTAHOSPITAL": "Seleccione un hospital",
+        "BTNSAVE": "Guardar",
+        "BTNCANCEL": "Cancelar",
+        "PHOTO": "Fotografía"
+      }
     }
   },
   "SPINNER": {

@@ -7,7 +7,7 @@ export class ModalUploadService {
   public type: string;
   public id: string;
   public hide = 'hide';
-  public notification = new EventEmitter<any>();
+  public notification = new EventEmitter<IUpdateImageUser | IUpdateImageHospital | IUpdateImageMedico>();
 
   constructor() {
     console.log('Modal upload listo!');

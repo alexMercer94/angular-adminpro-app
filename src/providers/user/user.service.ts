@@ -156,7 +156,7 @@ export class UserService {
   changeImage(file: File, id: string): void {
     this.uploadFileService
       .uploadFile(file, 'users', id)
-      .then((resp: IUpdateImage) => {
+      .then((resp: IUpdateImageUser) => {
         this.user.img = resp.user.img;
         Swal.fire({
           title: 'Imagen actualizada',
@@ -167,7 +167,7 @@ export class UserService {
 
         this.saveInLocalStorage(id, this.token, this.user);
       })
-      .catch((resp: IUpdateImage) => {
+      .catch((resp: IUpdateImageUser) => {
         console.log(resp);
       });
   }
@@ -190,6 +190,10 @@ export class UserService {
     return this.http.get(URL).pipe(map((res: ISearchUsers) => res.users));
   }
 
+  /**
+   * Delete a user consulting web service
+   * @param id User's ID to delete in database
+   */
   deleteUser(id: string): Observable<IDeleteUser> {
     const URL = URL_SERVICES + `${EApi.userServices}/${id}/?token=${this.token}`;
     return this.http.delete(URL).pipe(tap((resp: IDeleteUser) => resp));
