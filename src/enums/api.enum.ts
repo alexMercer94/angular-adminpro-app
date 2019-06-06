@@ -14,6 +14,7 @@ export enum EApi {
   // * Login
   getLogin = '/login',
   getLoginGoogle = '/login/google',
+  renewToken = '/login/renewtoken',
 
   // *Images
   getImage = '/img',

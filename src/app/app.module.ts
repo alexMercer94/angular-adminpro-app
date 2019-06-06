@@ -6,7 +6,8 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { LoginComponent } from '../components/login/login.component';
 import { RegisterComponent } from '../components/login/register.component';
-import { PagesModule } from '../pages/pages.module';
+import { SharedModule } from '../components/shared/shared.module';
+import { PagesComponent } from '../pages/pages.component';
 import { ProviderModule } from '../providers/provider.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,7 +18,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 }
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, RegisterComponent],
+  declarations: [AppComponent, LoginComponent, RegisterComponent, PagesComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
@@ -28,8 +29,8 @@ export function HttpLoaderFactory(http: HttpClient) {
         deps: [HttpClient]
       }
     }),
+    SharedModule,
     ReactiveFormsModule,
-    PagesModule,
     ProviderModule,
     AppRoutingModule,
     FormsModule

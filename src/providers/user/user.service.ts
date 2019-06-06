@@ -22,6 +22,30 @@ export class UserService {
   }
 
   /**
+   * Renew User's token consulting web service and save it in local storage
+   */
+  renewToken(): Observable<boolean> {
+    const URL = URL_SERVICES + `${EApi.renewToken}?token=${this.token}`;
+    return this.http.get(URL).pipe(
+      map((res: IRenewToken) => {
+        this.token = res.token;
+        localStorage.setItem('token', this.token);
+        return true;
+      }),
+      catchError(err => {
+        this.logOut();
+        Swal.fire({
+          title: 'No se pudo renovar token',
+          text: 'No ha sido posible renovar token',
+          type: 'error',
+          confirmButtonText: 'OK'
+        });
+        return throwError(err);
+      })
+    );
+  }
+
+  /**
    * Know if there is a user session
    */
   isLogIn(): boolean {
