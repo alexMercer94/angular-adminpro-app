@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
 import { User } from 'src/models/user.model';
 import Swal from 'sweetalert2';
 import { URL_SERVICES } from '../../config/config';
@@ -15,6 +15,7 @@ import { UploadFilesService } from '../uploadFiles/upload-files.service';
 export class UserService {
   user: User;
   token: string;
+  menu: IMenuItem[] = [];
 
   constructor(public http: HttpClient, private router: Router, public uploadFileService: UploadFilesService) {
     this.loadStorage();
@@ -34,9 +35,11 @@ export class UserService {
     if (localStorage.getItem('token')) {
       this.token = localStorage.getItem('token');
       this.user = JSON.parse(localStorage.getItem('user'));
+      this.menu = JSON.parse(localStorage.getItem('menu'));
     } else {
       this.token = '';
       this.user = null;
+      this.menu = [];
     }
   }
 
@@ -45,14 +48,17 @@ export class UserService {
    * @param id Data's id from service
    * @param token Data's token from service
    * @param user Data's user from service
+   * @param menu Data's menu from service
    */
-  saveInLocalStorage(id: string, token: string, user: User): void {
+  saveInLocalStorage(id: string, token: string, user: User, menu: IMenuItem[]): void {
     localStorage.setItem('id', id);
     localStorage.setItem('token', token);
     localStorage.setItem('user', JSON.stringify(user));
+    localStorage.setItem('menu', JSON.stringify(menu));
 
     this.user = user;
     this.token = token;
+    this.menu = menu;
   }
 
   /**
@@ -61,9 +67,11 @@ export class UserService {
   logOut(): void {
     this.user = null;
     this.token = '';
+    this.menu = [];
 
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+    localStorage.removeItem('menu');
 
     this.router.navigate(['/login']);
   }
@@ -77,7 +85,8 @@ export class UserService {
 
     return this.http.post(URL, { token }).pipe(
       tap((resp: ILoginUserGoogle) => {
-        this.saveInLocalStorage(resp.id, resp.token, resp.user);
+        this.saveInLocalStorage(resp.id, resp.token, resp.user, resp.menu);
+        console.log(resp);
         return true;
       })
     );
@@ -96,8 +105,17 @@ export class UserService {
     const URL = URL_SERVICES + EApi.getLogin;
     return this.http.post(URL, user).pipe(
       tap((resp: ILoginUser) => {
-        this.saveInLocalStorage(resp.id, resp.token, resp.user);
+        this.saveInLocalStorage(resp.id, resp.token, resp.user, resp.menu);
         return resp;
+      }),
+      catchError(err => {
+        Swal.fire({
+          title: 'Error!',
+          text: err.error.message,
+          type: 'error',
+          confirmButtonText: 'OK'
+        });
+        return throwError(err);
       })
     );
   }
@@ -113,7 +131,7 @@ export class UserService {
         let userDB: User;
         if (user._id === this.user._id) {
           userDB = resp.user;
-          this.saveInLocalStorage(userDB._id, this.token, userDB);
+          this.saveInLocalStorage(userDB._id, this.token, userDB, this.menu);
         }
 
         Swal.fire({
@@ -124,6 +142,15 @@ export class UserService {
         });
 
         return userDB;
+      }),
+      catchError(err => {
+        Swal.fire({
+          title: err.error.message,
+          text: err.error.errors.message,
+          type: 'error',
+          confirmButtonText: 'OK'
+        });
+        return throwError(err);
       })
     );
   }
@@ -144,6 +171,15 @@ export class UserService {
           confirmButtonText: 'OK'
         });
         return resp.user;
+      }),
+      catchError(err => {
+        Swal.fire({
+          title: err.error.message,
+          text: err.error.errors.message,
+          type: 'error',
+          confirmButtonText: 'OK'
+        });
+        return throwError(err);
       })
     );
   }
@@ -165,7 +201,7 @@ export class UserService {
           confirmButtonText: 'OK'
         });
 
-        this.saveInLocalStorage(id, this.token, this.user);
+        this.saveInLocalStorage(id, this.token, this.user, this.menu);
       })
       .catch((resp: IUpdateImageUser) => {
         console.log(resp);

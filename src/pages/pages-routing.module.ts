@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CanactivateAdminGuard } from '../guards/canactivate-admin/canactivate-admin.guard';
 import { CanactivateAuthGuard } from '../guards/canactivate-auth/canactivate-auth.guard';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { Charts1Component } from './charts1/charts1.component';
@@ -12,6 +13,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { ProgressComponent } from './progress/progress.component';
 import { PromisesComponent } from './promises/promises.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
+import { SearchComponent } from './search/search.component';
 import { UsersComponent } from './users/users.component';
 
 const routes: Routes = [
@@ -27,8 +29,14 @@ const routes: Routes = [
       { path: 'account-settings', component: AccountSettingsComponent, data: { title: 'Ajustes del Tema' } },
       { path: 'rxjs', component: RxjsComponent, data: { title: 'RxJs' } },
       { path: 'profile', component: ProfileComponent, data: { title: 'Perfil de Usuario' } },
+      { path: 'search/:termino', component: SearchComponent, data: { title: 'Buscador' } },
       // Mantenimientos
-      { path: 'users', component: UsersComponent, data: { title: 'Mantenimiento de Usuarios' } },
+      {
+        path: 'users',
+        component: UsersComponent,
+        canActivate: [CanactivateAdminGuard],
+        data: { title: 'Mantenimiento de Usuarios' }
+      },
       { path: 'hospitals', component: HospitalsComponent, data: { title: 'Mantenimiento de Hospitales' } },
       { path: 'medicos', component: MedicosComponent, data: { title: 'Mantenimiento de Médicos' } },
       { path: 'medico/:id', component: MedicoComponent, data: { title: 'Actualizar Médico' } },

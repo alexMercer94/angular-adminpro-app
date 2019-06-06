@@ -3,7 +3,7 @@
     <div class="card">
       <div class="card-body">
         <h4 class="card-title">{{ 'DASHBOARD.PROFILE.PROFILE' | translate }}</h4>
-        <h6 class="card-subtitle">made with bootstrap elements</h6>
+        <h6 class="card-subtitle">{{ 'DASHBOARD.PROFILE.USERNAME' | translate }} : {{ user.name }}</h6>
 
         <form ngNativeValidate #formUser="ngForm" (ngSubmit)="save(formUser.value)" class="form p-t-20">
           <div class="form-group">

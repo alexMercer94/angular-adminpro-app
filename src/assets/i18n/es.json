@@ -22,13 +22,21 @@
     "SIGNIN": "Inicia sesión",
     "MESSAGECONFIRMPASS": "Las contraseñas deben ser iguales."
   },
+  "NOPAGEFOUND":{
+    "404": "404",
+    "NOTFOUND": "Page Not Found!",
+    "MESSAGE": "Parece que encontraste un ratón.",
+    "BTNBACK": "Regresar a Login",
+    "NAME": "Admin Pro."
+  },
   "DASHBOARD": {
     "ACCOUNTSETTINGS": {
       "THEMES": "Temas"
     },
     "HEADER": {
       "VIEWPERFIL": "Ver perfil",
-      "MYPROFILE": "Mi Perfil"
+      "MYPROFILE": "Mi Perfil",
+      "SEARCH": "Buscar"
     },
     "SIDEBAR": {
       "PROFILE": "Perfil"

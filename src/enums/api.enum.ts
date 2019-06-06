@@ -22,5 +22,8 @@ export enum EApi {
   uploadImages = '/upload',
 
   // * Search in especific collection
-  searchSpecificCollection = '/busqueda/coleccion/'
+  searchSpecificCollection = '/busqueda/coleccion/',
+
+  // * Sarch in all collections
+  searchAllCollections = '/busqueda/all/'
 }

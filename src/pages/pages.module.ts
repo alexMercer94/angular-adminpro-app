@@ -21,6 +21,7 @@ import { UsersComponent } from './users/users.component';
 import { HospitalsComponent } from './hospitals/hospitals.component';
 import { MedicosComponent } from './medicos/medicos.component';
 import { MedicoComponent } from './medicos/medico.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { MedicoComponent } from './medicos/medico.component';
     ModalUploadComponent,
     HospitalsComponent,
     MedicosComponent,
-    MedicoComponent
+    MedicoComponent,
+    SearchComponent
   ],
   exports: [DashboardComponent, ProgressComponent, Charts1Component, PagesComponent],
   imports: [CommonModule, FormsModule, SharedModule, ChartsModule, TranslateModule, PagesRoutingModule, PipesModule]
